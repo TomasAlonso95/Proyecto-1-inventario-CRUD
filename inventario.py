@@ -1,6 +1,6 @@
 
 class Inventario:
-    def __init__(self):
+    def __init__(self): 
         self.productos = {}
     def agregar_productos(self, id, nombre, stock):
         if id in self.productos:
@@ -44,16 +44,22 @@ if __name__ == "__main__":
         if opcion == "1":
             id = input("ID: ")
             nombre = input("Nombre: ")
-            stock = int(input("Stock inicial: "))
-            bodega_norte.agregar_productos(id, nombre, stock)
+            try:
+                stock = int(input("Stock inicial (número): "))
+                bodega_norte.agregar_productos(id, nombre, stock)
+            except ValueError:
+                print(f"⚠️Error: El stock debe ser un número entero.")
 
         elif opcion == "2":
             bodega_norte.mostrar_productos()
 
         elif opcion == "3":
             id = input("ID del producto: ")
-            cant = int(input("Nuevo stock total: "))
-            bodega_norte.actualizar_productos(id, cant)
+            try:
+                cant = int(input("Nuevo stock total: "))
+                bodega_norte.actualizar_productos(id, cant)
+            except:
+                print(f"⚠️Error: Ingresaste letras, porfavor ingresa un número.")
 
         elif opcion == "4":
             id = input("ID del producto: ")
